@@ -13,4 +13,8 @@ class DeskList extends Model
     {
         return $this->hasMany(Task::class);
     }
+    public function desks()
+    {
+        return $this->belongsTo(Desk::class);
+    }
 }

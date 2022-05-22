@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Card extends Model
 {
     use HasFactory;
+
+    public function tasks ()
+    {
+        return $this->hasMany(Task::class);
+    }
+    public function lists()
+    {
+        return $this->belongsTo(DeskList::class);
+    }
 }
