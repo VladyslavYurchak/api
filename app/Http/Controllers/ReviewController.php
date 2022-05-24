@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Http\Resources\ReviewResource;
 use App\Models\Product;
 use App\Models\Review;
 
 class ReviewController extends Controller
 {
 
-    public function index($product)
+    public function index(Product $product)
     {
-        return Review::all()->where('product_id', $product);
+        return ReviewResource::collection(Review::all()->where('product_id', $product->id));
     }
 
     public function create()
